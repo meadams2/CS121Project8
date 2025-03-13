@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Guesser {
-	public static void main(){
+	public static void main(String[] args){
 		Guesser game = new Guesser();
 	} //end main
 	
@@ -16,13 +16,14 @@ public class Guesser {
 				keepGoing = false;
 			} //end exit condition
 			
-			else if (userResponse.equals("1"){
+			else if (userResponse.equals("1")){
 				humanGuesser();
 			} //end Human Guesser condition
-			
+		/*	
 			else if (userResponse.equals("2"){
 				computerGuesser();
 			} //end Computer Guesser condition
+			*/
 		} // end while loop
 	} //end constructor
 	
@@ -44,6 +45,7 @@ public class Guesser {
 	
 	public void humanGuesser(){
 		int correctNum = (int)(Math.random() * 101);
+		System.out.println("Correct Number: " + correctNum);
 		java.util.Scanner guessInput = new java.util.Scanner(System.in);
 		boolean keepGoing = true;
 		int turns = 0;
@@ -67,8 +69,9 @@ public class Guesser {
 			} //end too high condition
 			
 			if (turns >= 7){
-				System.out.printl("Out of Turns!");
+				System.out.println("Out of Turns!");
 				keepGoing = false;
 			} //end turns condition	
 		} //end while loop
-	} //end Human Guesser	
+	} //end Human Guesser
+} //end guesser class	

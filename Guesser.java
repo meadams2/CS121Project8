@@ -19,11 +19,11 @@ public class Guesser {
 			else if (userResponse.equals("1")){
 				humanGuesser();
 			} //end Human Guesser condition
-		/*	
-			else if (userResponse.equals("2"){
+		
+			else if (userResponse.equals("2")){
 				computerGuesser();
 			} //end Computer Guesser condition
-			*/
+			
 		} // end while loop
 	} //end constructor
 	
@@ -74,4 +74,35 @@ public class Guesser {
 			} //end turns condition	
 		} //end while loop
 	} //end Human Guesser
+
+	public void computerGuesser(){
+		java.util.Scanner correctInput = new java.util.Scanner(System.in);
+		boolean keepGoing = true;
+		int turns = 0;
+		int maxNumber = 100;
+		int minNumber = 0;
+
+		while(keepGoing){
+			int computerGuess = findMean(maxNumber, minNumber);
+			System.out.println( turns + ") I guess..." + computerGuess);
+			System.out.print("Too (H)igh, Too (L)ow, or (C)orrect?");
+			String userResponse = correctInput.nextLine();
+
+			if (userResponse.equalsIgnoreCase("C")){
+				keepGoing = false;
+			} //end correct condition
+			else if (userResponse.equalsIgnoreCase("L")){
+				minNumber = computerGuess;
+				turns += 1;
+			} //end too low condition
+			else if (userResponse.equalsIgnoreCase("H")){
+				maxNumber = computerGuess;
+				turns += 1;
+			} //end too high condition
+
+			if (turns >= 7){
+				keepGoing = false;
+			} //end turns condition
+		} //end while loop
+	}//end computerGuesser()
 } //end guesser class	

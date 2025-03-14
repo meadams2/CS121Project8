@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Guesser {
+	private static final java.util.Scanner input = new java.util.Scanner(System.in);
 	public static void main(String[] args){
 		Guesser game = new Guesser();
 	} //end main
@@ -23,17 +24,16 @@ public class Guesser {
 			else if (userResponse.equals("2")){
 				computerGuesser();
 			} //end Computer Guesser condition
-			
 		} // end while loop
+		input.close();
 	} //end constructor
 	
 	public String menu(){
-		java.util.Scanner menuInput = new java.util.Scanner(System.in);
 		System.out.println("0) Exit");
 		System.out.println("1) Human Guesser");
 		System.out.println("2) Computer Guesser");
 		System.out.println("Please enter 0-2: ");
-		String menuResponse = menuInput.nextLine();
+		String menuResponse = input.nextLine();
 		return menuResponse;
 	} //end menu
 	
@@ -46,13 +46,13 @@ public class Guesser {
 	public void humanGuesser(){
 		int correctNum = (int)(Math.random() * 101);
 		System.out.println("Correct Number: " + correctNum);
-		java.util.Scanner guessInput = new java.util.Scanner(System.in);
+		//java.util.Scanner guessInput = new java.util.Scanner(System.in);
 		boolean keepGoing = true;
 		int turns = 0;
 	
 		while(keepGoing){
 			System.out.print(turns + ") Please enter a number: ");
-			String sUserGuess = guessInput.nextLine();
+			String sUserGuess = input.nextLine();
 			int userGuess = Integer.parseInt(sUserGuess);
 
 			if(userGuess == correctNum){
@@ -76,7 +76,7 @@ public class Guesser {
 	} //end Human Guesser
 
 	public void computerGuesser(){
-		java.util.Scanner correctInput = new java.util.Scanner(System.in);
+		//java.util.Scanner correctInput = new java.util.Scanner(System.in);
 		boolean keepGoing = true;
 		int turns = 0;
 		int maxNumber = 100;
@@ -86,7 +86,7 @@ public class Guesser {
 			int computerGuess = findMean(maxNumber, minNumber);
 			System.out.println( turns + ") I guess..." + computerGuess);
 			System.out.print("Too (H)igh, Too (L)ow, or (C)orrect?");
-			String userResponse = correctInput.nextLine();
+			String userResponse = input.nextLine();
 
 			if (userResponse.equalsIgnoreCase("C")){
 				keepGoing = false;
